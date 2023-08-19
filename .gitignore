@@ -1,0 +1,16 @@
+# python packaging
+venv/
+*.egg-info
+dist/
+
+# quality tools
+.mypy_cache
+.pytest_cache
+.ruff_cache
+__pycache__
+
+.env
+
+# editors files
+.idea/
+tags
