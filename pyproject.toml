@@ -54,6 +54,7 @@ ignore = [
 "*_test.py" = [
     "S101", # assert
     "PLR2004", # missing-type-self
+    "E501", # line-too-long
 ]
 "src/conftest.py" = [
     "INP001", # add __init__.py
