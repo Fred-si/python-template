@@ -18,7 +18,7 @@ classifiers = [
 ]
 
 [project.scripts]
-hello = "hello:hello"
+hello = "hello:hello_world"
 
 [project.urls]
 "Homepage" = "https://github.com/fred-si/{{ project_name }}"
@@ -26,7 +26,7 @@ hello = "hello:hello"
 
 [tool.pytest.ini_options]
 python_classes = ["*Test"]
-
+addopts = "--doctest-modules"
 
 [tool.ruff]
 fixable = [

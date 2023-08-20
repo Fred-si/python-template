@@ -1,2 +1,18 @@
+def hello_world() -> str:
+    return f'{hello()}, {world()}!'.capitalize()
+
 def hello() -> str:
-    return 'Hello, world!'
+    """Say hello.
+
+    >>> hello()
+    'hello'
+    """
+    return 'hello'
+
+def world() -> str:
+    """Say world.
+
+    >>> world()
+    'world'
+    """
+    return 'world'

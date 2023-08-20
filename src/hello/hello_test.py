@@ -1,5 +1,5 @@
-from .hello import hello
+from .hello import hello_world
 
 
 def test_hello() -> None:
-    assert hello() == 'Hello, world!'
+    assert hello_world() == 'Hello, world!'
