@@ -1,4 +1,4 @@
-from .hello import hello_world
+from .main import hello_world
 
 
 def test_hello() -> None:
