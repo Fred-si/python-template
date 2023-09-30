@@ -13,4 +13,5 @@ __pycache__
 
 # editors files
 .idea/
+data/
 tags
