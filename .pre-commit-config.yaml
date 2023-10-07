@@ -2,7 +2,7 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.2.0
+    rev: v4.4.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -24,7 +24,7 @@ repos:
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
-    rev: v0.0.285
+    rev: v0.0.292
     hooks:
       - id: ruff
         args: [ --fix ]
@@ -36,6 +36,6 @@ repos:
         args: [ --strict, --ignore-missing-imports ]
 
   - repo: https://github.com/psf/black
-    rev: 22.10.0
+    rev: 23.9.1
     hooks:
       - id: black
