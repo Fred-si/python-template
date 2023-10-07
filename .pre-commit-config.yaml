@@ -34,3 +34,8 @@ repos:
     hooks:
     -   id: mypy
         args: [--strict, --ignore-missing-imports]
+
+-   repo: https://github.com/psf/black
+    rev: 22.10.0
+    hooks:
+        -   id: black
