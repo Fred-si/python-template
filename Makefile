@@ -16,6 +16,8 @@ setup: pip_install $(GIT_HOOKS) mypy ## Init python venv and git hooks
 	if [ -e setup_project.py ]; then \
   		python setup_project.py \
   		&& rm setup_project.py \
+  		&& rm -rf .git \
+  		&& git init \
   		&& git add . \
   		&& git commit -m 'Setup project' \
   	; fi
