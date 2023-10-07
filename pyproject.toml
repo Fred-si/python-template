@@ -64,7 +64,7 @@ ignore = [
 mypy-init-return = true
 
 [tool.ruff.flake8-quotes]
-inline-quotes = "single"
+inline-quotes = "double"
 
 [tool.ruff.isort]
 lines-between-types = 1

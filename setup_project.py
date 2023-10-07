@@ -27,7 +27,7 @@ def ask_project_infos() -> ProjectInfo:
 
 
 def ask_name() -> str:
-    return clean_name(ask('Enter the project name: '))
+    return clean_name(ask("Enter the project name: "))
 
 
 def clean_name(name: str) -> str:
@@ -40,11 +40,11 @@ def clean_name(name: str) -> str:
     >>> clean_name('a a')
     'a-a'
     """
-    return name.replace('_', '-').replace(' ', '-')
+    return name.replace("_", "-").replace(" ", "-")
 
 
 def ask_description() -> str:
-    return clean_description(ask('Enter the project description: '))
+    return clean_description(ask("Enter the project description: "))
 
 
 def clean_description(description: str) -> str:
@@ -61,7 +61,7 @@ def clean_description(description: str) -> str:
 
 
 def ask_confirmation(prompt: str) -> bool:
-    return (get_input(f'{prompt}? [O/n] ').lower() or 'o') == 'o'
+    return (get_input(f"{prompt}? [O/n] ").lower() or "o") == "o"
 
 
 def ask(prompt: str) -> str:
@@ -112,8 +112,8 @@ def format_pyproject(pyproject: str, project_infos: ProjectInfo) -> str:
     ... )
     'foo bar'
     """
-    name_placeholder = '{{ project_name }}'
-    description_placeholder = '{{ project_description }}'
+    name_placeholder = "{{ project_name }}"
+    description_placeholder = "{{ project_description }}"
     error_template = 'pyproject template not contain "{placeholder}" placeholder.'
 
     if name_placeholder not in pyproject:
@@ -132,14 +132,14 @@ def format_pyproject(pyproject: str, project_infos: ProjectInfo) -> str:
 
 
 def setup_pyproject(project_infos: ProjectInfo) -> None:
-    with Path('pyproject.toml').open() as file:
+    with Path("pyproject.toml").open() as file:
         pyproject = file.read()
 
     pyproject = format_pyproject(pyproject, project_infos)
 
-    with Path('pyproject.toml').open('w') as file:
+    with Path("pyproject.toml").open("w") as file:
         file.write(pyproject)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
