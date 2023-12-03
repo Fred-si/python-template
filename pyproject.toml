@@ -30,9 +30,32 @@ addopts = "--doctest-modules"
 
 [tool.ruff]
 fixable = [
-    "Q000", # simple/double quotes
+    "C408", # Unnecessary `dict` call (rewrite as a literal)
+    "C416", # Unnecessary `dict` comprehension (rewrite using `dict()`)
     "COM812", # trailing comma
     "D210", # no whitespace surrounding docstring text
+    "D213", # Multi-line docstring summary should start at the second line
+    "EM101", # Exception must not use a string literal, assign to variable first
+    "EM102", # Exception must not use an f-string literal, assign to variable first
+    "F401", # unused import
+    "F841", # Local variable `poss` is assigned to but never used
+    "PGH004", # Use specific rule codes when using `noqa`
+    "Q000", # bad-quotes-inline-string
+    "Q001", # bad-quotes-multiline-string
+    "Q002", # bad-quotes-docstring
+    "RSE102", # Unnecessary parentheses on raised exception
+    "RUF005", # Consider `[*data, data[-1] + 3]` instead of concatenation
+    "RUF015", # Prefer `next(...)` over single element slice
+    "RUF100", # Unused blanket `noqa` directive
+    "SIM110", # Use `return all(field in passport_fields for field in REQUIRED_FIELDS.keys())` instead of `for` loop
+    "SIM118", # Use `key in dict` instead of `key in dict.keys()`
+    "SIM201", # negate-equal-op
+    "SIM210", # Remove unnecessary `True if ... else False`
+    "SIM210", # Use `bool(...)` instead of `True if ... else False`
+    "TCH001", # Move application import `advent_of_code.DayResult` into a type-checking block
+    "TCH003", # Move standard library import `collections.abc.Generator` into a type-checking block
+    "TRY003", # Avoid specifying long messages outside the exception class
+    "UP035", # import from collections.abc instead of typing
 ]
 extend-select = ["A", "B", "C", "D", "E", "F", "G", "I", "N", "Q", "S", "T", "W", "ANN", "ARG", "BLE", "COM", "DJ", "DTZ", "EM", "ERA", "EXE", "FBT", "ICN", "INP", "ISC", "NPY", "PD", "PGH", "PIE", "PL", "PT", "PTH", "PYI", "RET", "RSE", "RUF", "SIM", "SLF", "TCH", "TID", "TRY", "UP", "YTT"]
 ignore = [
