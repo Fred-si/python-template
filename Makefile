@@ -18,9 +18,6 @@ setup: pip_install $(GIT_HOOKS) mypy ## Init python venv and git hooks
   		python setup_project.py \
   		&& rm setup_project.py \
   		&& rm -rf .git \
-  		&& git init \
-  		&& pre-commit install \
-  		&& pre-commit autoupdate \
   		&& git add . \
   		&& git commit -m 'Setup project' \
   	; fi
@@ -38,15 +35,14 @@ venv:
 
 $(GIT_HOOKS): .git .pre-commit-config.yaml
 	source venv/bin/activate
-	pre-commit install
+	pre-commit autoupdate
+	pre-commit install --install-hooks
 
 .git:
 	git init
-	git add .
 
 mypy:
 	source venv/bin/activate
-	mypy src
-	mypy --install-types
+	mypy --install-types .
 
 # vim: tw=0
