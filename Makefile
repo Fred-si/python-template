@@ -2,6 +2,7 @@
 .DEFAULT_GOAL = setup
 .PHONY: help test setup teardown mypy
 
+SHELL := /bin/bash
 GIT_HOOKS = .git/hooks/pre-commit
 
 GREEN = \033[32m
