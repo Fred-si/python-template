@@ -61,7 +61,7 @@ def clean_description(description: str) -> str:
 
 
 def ask_confirmation(prompt: str) -> bool:
-    return (get_input(f"{prompt}? [O/n] ").lower() or "o") == "o"
+    return (get_input(f"{prompt}? [O/n] ").lower() or "o") in "oy"
 
 
 def ask(prompt: str) -> str:
@@ -124,20 +124,24 @@ def format_pyproject(pyproject: str, project_infos: ProjectInfo) -> str:
         error_message = error_template.format(placeholder=description_placeholder)
         raise ValueError(error_message)
 
-    return (
-        pyproject
-        .replace(name_placeholder, project_infos.name)
-        .replace(description_placeholder, project_infos.description)
+    return pyproject.replace(
+        name_placeholder,
+        project_infos.name,
+    ).replace(
+        description_placeholder,
+        project_infos.description,
     )
 
 
 def setup_pyproject(project_infos: ProjectInfo) -> None:
-    with Path("pyproject.toml").open() as file:
+    file_dir = Path(__file__).parent
+
+    with Path(file_dir, "pyproject.template.toml").open() as file:
         pyproject = file.read()
 
     pyproject = format_pyproject(pyproject, project_infos)
 
-    with Path("pyproject.toml").open("w") as file:
+    with Path(file_dir, "pyproject.toml").open("w") as file:
         file.write(pyproject)
 
 
