@@ -1,5 +1,17 @@
 from pathlib import Path
+from shutil import rmtree
 from typing import NamedTuple
+
+CURRENT_FILE = Path(__file__)
+PROJECT_ROOT = CURRENT_FILE.parent
+
+MAKEFILE_TEMPLATE = Path(PROJECT_ROOT, "Makefile.template")
+MAKEFILE = Path(PROJECT_ROOT, "Makefile")
+
+PYPROJECT_TEMPLATE = Path(PROJECT_ROOT, "pyproject.template.toml")
+PYPROJECT = Path(PROJECT_ROOT, "pyproject.toml")
+
+GIT_DIRECTORY = Path(PROJECT_ROOT, ".git")
 
 
 class ProjectInfo(NamedTuple):
@@ -9,7 +21,20 @@ class ProjectInfo(NamedTuple):
 
 def main() -> None:
     project_infos = ask_project_infos()
-    setup_pyproject(project_infos)
+
+    with PYPROJECT_TEMPLATE.open() as file:
+        pyproject_content = file.read()
+
+    pyproject_content = format_pyproject(pyproject_content, project_infos)
+
+    with PYPROJECT.open("w") as file:
+        file.write(pyproject_content)
+
+    PYPROJECT_TEMPLATE.unlink(missing_ok=True)
+
+    MAKEFILE_TEMPLATE.rename(MAKEFILE)
+    rmtree(GIT_DIRECTORY)
+    CURRENT_FILE.unlink()
 
 
 def ask_project_infos() -> ProjectInfo:
@@ -131,18 +156,6 @@ def format_pyproject(pyproject: str, project_infos: ProjectInfo) -> str:
         description_placeholder,
         project_infos.description,
     )
-
-
-def setup_pyproject(project_infos: ProjectInfo) -> None:
-    file_dir = Path(__file__).parent
-
-    with Path(file_dir, "pyproject.template.toml").open() as file:
-        pyproject = file.read()
-
-    pyproject = format_pyproject(pyproject, project_infos)
-
-    with Path(file_dir, "pyproject.toml").open("w") as file:
-        file.write(pyproject)
 
 
 if __name__ == "__main__":
