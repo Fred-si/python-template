@@ -11,6 +11,9 @@ MAKEFILE = Path(PROJECT_ROOT, "Makefile")
 PYPROJECT_TEMPLATE = Path(PROJECT_ROOT, "pyproject.template.toml")
 PYPROJECT = Path(PROJECT_ROOT, "pyproject.toml")
 
+README_TEMPLATE = Path(PROJECT_ROOT, "README.template.md")
+README = Path(PROJECT_ROOT, "README.md")
+
 GIT_DIRECTORY = Path(PROJECT_ROOT, ".git")
 
 
@@ -22,15 +25,8 @@ class ProjectInfo(NamedTuple):
 def main() -> None:
     project_infos = ask_project_infos()
 
-    with PYPROJECT_TEMPLATE.open() as file:
-        pyproject_content = file.read()
-
-    pyproject_content = format_pyproject(pyproject_content, project_infos)
-
-    with PYPROJECT.open("w") as file:
-        file.write(pyproject_content)
-
-    PYPROJECT_TEMPLATE.unlink(missing_ok=True)
+    format_file(PYPROJECT_TEMPLATE, PYPROJECT, project_infos)
+    format_file(README_TEMPLATE, README, project_infos)
 
     MAKEFILE_TEMPLATE.rename(MAKEFILE)
     rmtree(GIT_DIRECTORY)
@@ -100,38 +96,50 @@ def get_input(prompt: str) -> str:
     return input(prompt).strip()
 
 
-def format_pyproject(pyproject: str, project_infos: ProjectInfo) -> str:
+def format_file(template: Path, target: Path, project_infos: ProjectInfo) -> None:
+    with template.open() as file:
+        file_content = file.read()
+
+    file_content = format_template(file_content, project_infos)
+
+    with target.open("w") as file:
+        file.write(file_content)
+
+    template.unlink()
+
+
+def format_template(template: str, project_infos: ProjectInfo) -> str:
     """Format pyproject template with project infos.
 
-    >>> format_pyproject('', ProjectInfo('', ''))
+    >>> format_template('', ProjectInfo('', ''))
     Traceback (most recent call last):
         ...
     ValueError: pyproject template not contain "{{ project_name }}" placeholder.
 
-    >>> format_pyproject('{{ project_name }}', ProjectInfo('', ''))
+    >>> format_template('{{ project_name }}', ProjectInfo('', ''))
     Traceback (most recent call last):
         ...
     ValueError: pyproject template not contain "{{ project_description }}" placeholder.
 
-    >>> format_pyproject(
+    >>> format_template(
     ...     '{{ project_name }} {{ project_description }}',
     ...     ProjectInfo('',''),
     ... )
     ' '
 
-    >>> format_pyproject(
+    >>> format_template(
     ...     '{{ project_name }} {{ project_description }}',
     ...     ProjectInfo('foo',''),
     ... )
     'foo '
 
-    >>> format_pyproject(
+    >>> format_template(
     ...     '{{ project_name }} {{ project_description }}',
     ...     ProjectInfo('','foo'),
     ... )
     ' foo'
 
-    >>> format_pyproject(
+    >>> format_template(
     ...     '{{ project_name }} {{ project_description }}',
     ...     ProjectInfo('foo','bar'),
     ... )
@@ -139,17 +147,17 @@ def format_pyproject(pyproject: str, project_infos: ProjectInfo) -> str:
     """
     name_placeholder = "{{ project_name }}"
     description_placeholder = "{{ project_description }}"
-    error_template = 'pyproject template not contain "{placeholder}" placeholder.'
+    error_template = 'Template not contain "{placeholder}" placeholder.'
 
-    if name_placeholder not in pyproject:
+    if name_placeholder not in template:
         error_message = error_template.format(placeholder=name_placeholder)
         raise ValueError(error_message)
 
-    if description_placeholder not in pyproject:
+    if description_placeholder not in template:
         error_message = error_template.format(placeholder=description_placeholder)
         raise ValueError(error_message)
 
-    return pyproject.replace(
+    return template.replace(
         name_placeholder,
         project_infos.name,
     ).replace(
