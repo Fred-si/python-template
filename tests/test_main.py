@@ -1,4 +1,4 @@
-from main.main import hello_world
+from python_template.main import hello_world
 
 
 class TestMain:

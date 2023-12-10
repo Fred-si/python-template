@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "python-template"
+name = "python_template"
 version = "0.0.1"
 authors = [
     { name = "fred-si", email = "fred-si@zaclys.net" },
@@ -18,7 +18,7 @@ classifiers = [
 ]
 
 [project.scripts]
-hello = "src.main:main"
+hello = "src.python_template:main"
 
 [project.urls]
 "Homepage" = "https://github.com/fred-si/{{ project_name }}"

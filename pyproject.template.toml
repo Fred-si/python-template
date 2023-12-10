@@ -18,7 +18,7 @@ classifiers = [
 ]
 
 [project.scripts]
-hello = "src.main:main"
+hello = "src.{{ project_name }}:main"
 
 [project.urls]
 "Homepage" = "https://github.com/fred-si/{{ project_name }}"

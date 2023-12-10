@@ -16,6 +16,9 @@ README = Path(PROJECT_ROOT, "README.md")
 
 GIT_DIRECTORY = Path(PROJECT_ROOT, ".git")
 
+SOURCE_ROOT = Path(PROJECT_ROOT, "src", "python_template")
+TEST_FILE = Path(PROJECT_ROOT, "tests", "test_main.py")
+
 
 class ProjectInfo(NamedTuple):
     name: str
@@ -28,7 +31,14 @@ def main() -> None:
     format_file(PYPROJECT_TEMPLATE, PYPROJECT, project_infos)
     format_file(README_TEMPLATE, README, project_infos)
 
+    with TEST_FILE.open() as test_file:
+        test_content = test_file.read()
+    test_content = test_content.replace("python_template", project_infos.name)
+    with TEST_FILE.open("w") as test_file:
+        test_file.write(test_content)
+
     MAKEFILE_TEMPLATE.rename(MAKEFILE)
+    SOURCE_ROOT.rename(project_infos.name)
     rmtree(GIT_DIRECTORY)
     CURRENT_FILE.unlink()
 
@@ -57,11 +67,13 @@ def clean_name(name: str) -> str:
     >>> clean_name('a')
     'a'
     >>> clean_name('a_a')
-    'a-a'
+    'a_a'
     >>> clean_name('a a')
-    'a-a'
+    'a_a'
+    >>> clean_name('a-a')
+    'a_a'
     """
-    return name.replace("_", "-").replace(" ", "-")
+    return name.replace("-", "_").replace(" ", "_")
 
 
 def ask_description() -> str:
