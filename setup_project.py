@@ -96,7 +96,11 @@ def get_input(prompt: str) -> str:
     return input(prompt).strip()
 
 
-def format_file(template: Path, target: Path, project_infos: ProjectInfo) -> None:
+def format_file(
+    template: Path,
+    target: Path,
+    project_infos: ProjectInfo,
+) -> None:
     with template.open() as file:
         file_content = file.read()
 
@@ -114,12 +118,12 @@ def format_template(template: str, project_infos: ProjectInfo) -> str:
     >>> format_template('', ProjectInfo('', ''))
     Traceback (most recent call last):
         ...
-    ValueError: pyproject template not contain "{{ project_name }}" placeholder.
+    ValueError: template not contain "{{ project_name }}" placeholder.
 
     >>> format_template('{{ project_name }}', ProjectInfo('', ''))
     Traceback (most recent call last):
         ...
-    ValueError: pyproject template not contain "{{ project_description }}" placeholder.
+    ValueError: template not contain "{{ project_description }}" placeholder.
 
     >>> format_template(
     ...     '{{ project_name }} {{ project_description }}',
@@ -147,14 +151,16 @@ def format_template(template: str, project_infos: ProjectInfo) -> str:
     """
     name_placeholder = "{{ project_name }}"
     description_placeholder = "{{ project_description }}"
-    error_template = 'Template not contain "{placeholder}" placeholder.'
+    error_template = 'template not contain "{placeholder}" placeholder.'
 
     if name_placeholder not in template:
         error_message = error_template.format(placeholder=name_placeholder)
         raise ValueError(error_message)
 
     if description_placeholder not in template:
-        error_message = error_template.format(placeholder=description_placeholder)
+        error_message = error_template.format(
+            placeholder=description_placeholder,
+        )
         raise ValueError(error_message)
 
     return template.replace(

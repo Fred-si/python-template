@@ -3,12 +3,12 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "{{ project_name }}"
+name = "python-template"
 version = "0.0.1"
 authors = [
     { name = "fred-si", email = "fred-si@zaclys.net" },
 ]
-description = "{{ project_description }}"
+description = "A simple repository template for my Python projects."
 readme = "README.md"
 requires-python = ">=3.11"
 classifiers = [
