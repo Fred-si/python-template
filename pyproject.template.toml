@@ -26,9 +26,18 @@ hello = "src.{{ project_name }}:main"
 
 [tool.pytest.ini_options]
 pythonpath = "src"
+testpaths = ["tests"]
 addopts = [
     "--import-mode=importlib",
     "--doctest-modules",
+]
+norecursedirs = [
+    "dist",
+    "build",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".github",
 ]
 
 [tool.mypy]
