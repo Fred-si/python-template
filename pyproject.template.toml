@@ -17,6 +17,8 @@ classifiers = [
     "Operating System :: POSIX :: Linux",
 ]
 
+dependencies = []
+
 [project.scripts]
 hello = "src.{{ project_name }}:main"
 
