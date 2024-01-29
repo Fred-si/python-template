@@ -3,12 +3,12 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "{{ project_name }}"
+name = "{{ cookiecutter.project_name }}"
 version = "0.0.1"
 authors = [
     { name = "fred-si", email = "fred-si@zaclys.net" },
 ]
-description = "{{ project_description }}"
+description = "{{ cookiecutter.project_description }}"
 readme = "README.md"
 requires-python = ">=3.11"
 classifiers = [
@@ -20,11 +20,11 @@ classifiers = [
 dependencies = []
 
 [project.scripts]
-hello = "src.{{ project_name }}:main"
+hello = "src.{{ cookiecutter.project_name }}:main"
 
 [project.urls]
-"Homepage" = "https://github.com/fred-si/{{ project_name }}"
-"Bug Tracker" = "https://github.com/fred-si/{{ project_name }}/issues"
+"Homepage" = "https://github.com/fred-si/{{ cookiecutter.project_name }}"
+"Bug Tracker" = "https://github.com/fred-si/{{ cookiecutter.project_name }}/issues"
 
 [tool.pytest.ini_options]
 pythonpath = "src"
