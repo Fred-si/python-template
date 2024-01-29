@@ -74,3 +74,28 @@ order-by-type = true
 [tool.black]
 target-version = ['py311', 'py312']
 line-length = 80
+
+[tool.coverage.run]
+omit = [
+    "tests/*",
+    "alembic/*",
+    "venv/*",
+    "data/*",
+    ".pytest_cache/*",
+    ".mypy_cache/*",
+    ".ruff_cache/*",
+]
+branch = true
+
+[tool.coverage.report]
+exclude_also = [
+    # Don't complain about missing debug-only code:
+    "def __repr__",
+    "if self\\.debug",
+    # Don't complain if non-runnable code isn't run:
+    "if TYPE_CHECKING:",
+    "assert_never",
+    "@overload",
+    # Don't complain about abstract methods, they aren't run:
+    "@(abc\\.)?abstractmethod",
+]
