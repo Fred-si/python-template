@@ -17,12 +17,9 @@ classifiers = [
     "Operating System :: POSIX :: Linux",
 ]
 
-[project.scripts]
-hello = "src.python_template:main"
-
 [project.urls]
-"Homepage" = "https://github.com/fred-si/{{ project_name }}"
-"Bug Tracker" = "https://github.com/fred-si/{{ project_name }}/issues"
+"Homepage" = "https://github.com/fred-si/python-template"
+"Bug Tracker" = "https://github.com/fred-si/python-template/issues"
 
 [tool.pytest.ini_options]
 pythonpath = "src"
