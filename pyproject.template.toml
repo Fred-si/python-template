@@ -31,6 +31,19 @@ addopts = [
     "--doctest-modules",
 ]
 
+[tool.mypy]
+python_version = "3.11"
+mypy_path = "$MYPY_CONFIG_FILE_DIR/src"
+strict = true
+exclude = [
+    "^(data|build|venv|alembic)/$",
+    '^(^\.mypy_cache|\.pytest_cache|\.ruff_cache)/$'
+]
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disable_error_code = ["method-assign"]
+
 [tool.ruff]
 fix = true
 unsafe-fixes = true
