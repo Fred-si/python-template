@@ -10,7 +10,7 @@ authors = [
 ]
 description = "{{ cookiecutter.project_description }}"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">={{ cookiecutter.python_version }}"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -43,7 +43,7 @@ norecursedirs = [
 ]
 
 [tool.mypy]
-python_version = "3.11"
+python_version = "{{ cookiecutter.python_version }}"
 mypy_path = "$MYPY_CONFIG_FILE_DIR/src"
 strict = true
 exclude = [
@@ -96,7 +96,7 @@ lines-between-types = 1
 order-by-type = true
 
 [tool.black]
-target-version = ['py311', 'py312']
+target-version = ["py{{ cookiecutter.python_version.replace('.', '') }}"]
 line-length = 80
 
 [tool.coverage.run]

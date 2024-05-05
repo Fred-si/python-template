@@ -5,8 +5,11 @@ import subprocess
 def run(command: list[str]) -> None:
     subprocess.run(command, capture_output=True, check=True)
 
+
+python_version = '{{ cookiecutter.python_version }}'
+
 print("Create venv...")
-run(["python3", "-m", "venv", "venv"])
+run([f"python{python_version}", "-m", "venv", "venv"])
 
 print("Upgrade pip...")
 run(["./venv/bin/pip", "install", "--upgrade", "pip"])
