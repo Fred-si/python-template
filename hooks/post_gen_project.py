@@ -22,12 +22,12 @@ run(["./venv/bin/mypy", "--install-types", "--non-interactive", "."])
 
 print("Setup Git...")
 run(["git", "init"])
-run(["git", "add", "."])
-run(["git", "commit", "-m", "Setup project"])
-
-print("Setup pre-commit...")
+# autoupdate modify .pre-commit-config.yaml, we need to run it before add files
 run(["./venv/bin/pre-commit", "autoupdate"])
+run(["git", "add", "."])
+
 run(["./venv/bin/pre-commit", "install", "--install-hooks"])
+run(["git", "commit", "-m", "Setup project"])
 
 print("\nAll done, run:")
 print(f"    cd {os.getcwd()} && source venv/bin/activate")
