@@ -59,6 +59,7 @@ disable_error_code = ["method-assign"]
 fix = true
 unsafe-fixes = true
 
+[tool.ruff.lint]
 extend-select = ["A", "B", "C", "D", "E", "F", "G", "I", "N", "Q", "S", "T", "W", "ANN", "ARG", "BLE", "COM", "DJ", "DTZ", "EM", "ERA", "EXE", "FBT", "ICN", "INP", "ISC", "NPY", "PD", "PGH", "PIE", "PL", "PT", "PTH", "PYI", "RET", "RSE", "RUF", "SIM", "SLF", "TCH", "TID", "TRY", "UP", "YTT"]
 ignore = [
     "D10", # missing docstring
@@ -74,7 +75,7 @@ ignore = [
     "PLC0414", # useless-import-alias
 ]
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["E402"]
 "test_*.py" = [
     "S101", # assert
@@ -85,13 +86,13 @@ ignore = [
     "INP001", # add __init__.py
 ]
 
-[tool.ruff.flake8-annotations]
+[tool.ruff.lint.flake8-annotations]
 mypy-init-return = true
 
-[tool.ruff.flake8-quotes]
+[tool.ruff.lint.flake8-quotes]
 inline-quotes = "double"
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 lines-between-types = 1
 order-by-type = true
 
