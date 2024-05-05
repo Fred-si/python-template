@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "{{ cookiecutter.project_name }}"
+name = "{{ cookiecutter.project_name.replace(' ', '-') }}"
 version = "0.0.1"
 authors = [
     { name = "fred-si", email = "fred-si@zaclys.net" },
@@ -20,7 +20,7 @@ classifiers = [
 dependencies = []
 
 [project.scripts]
-hello = "src.{{ cookiecutter.project_name }}:main"
+hello = "src.{{ cookiecutter.project_slug }}:main"
 
 [project.urls]
 "Homepage" = "https://github.com/fred-si/{{ cookiecutter.project_name }}"
