@@ -20,7 +20,7 @@ classifiers = [
 dependencies = []
 
 [project.scripts]
-hello = "src.{{ cookiecutter.project_slug }}:main"
+hello = "{{ cookiecutter.project_slug }}:main"
 
 [project.urls]
 "Homepage" = "https://github.com/fred-si/{{ cookiecutter.project_name }}"
