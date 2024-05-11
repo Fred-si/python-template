@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "{{ cookiecutter.project_name.replace(' ', '-') }}"
+name = "{{ cookiecutter.project_name.lower().replace(' ', '-') }}"
 version = "0.0.1"
 authors = [
     { name = "fred-si", email = "fred-si@zaclys.net" },
