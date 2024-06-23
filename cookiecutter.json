@@ -1,6 +1,6 @@
 {
     "project_name": "Cookiecutter python template",
-    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
     "project_description": "{{ cookiecutter.project_name }}",
     "author": "Frédéric Sierra",
     "python_version": ["3.12", "3.11", "3.10", "3.9"]
