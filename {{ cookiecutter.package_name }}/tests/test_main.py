@@ -1,4 +1,4 @@
-from {{ cookiecutter.project_slug }}.main import hello_world
+from {{ cookiecutter.package_name }}.main import hello_world
 
 
 class TestMain:
