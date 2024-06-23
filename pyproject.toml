@@ -24,7 +24,6 @@ classifiers = [
 [tool.pytest.ini_options]
 pythonpath = "src"
 addopts = [
-    "--import-mode=importlib",
     "--doctest-modules",
 ]
 

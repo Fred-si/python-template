@@ -45,7 +45,6 @@ hello = "{{ cookiecutter.project_slug }}:main"
 pythonpath = "src"
 testpaths = ["tests"]
 addopts = [
-    "--import-mode=importlib",
     "--doctest-modules",
 ]
 norecursedirs = [
