@@ -14,8 +14,8 @@ setup: venv ## Init python venv and git hooks
 	&& ./venv/bin/pre-commit install --install-hooks
 
 teardown: ## Delete generated files and venv
-    rm -rf venv dist .ruff_cache .pytest_cache .mypy_cache
-    find . -name '__pycache__' | xargs rm -r
+	rm -rf venv dist .ruff_cache .pytest_cache .mypy_cache
+	find . -name '__pycache__' | xargs rm -r
 
 venv:
 	python -m venv venv
