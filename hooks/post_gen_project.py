@@ -19,6 +19,7 @@ def run(command: list[str], *, raise_error: bool = True) -> str:
 
 
 python_version = "{{ cookiecutter.python_version }}"
+project_slug = "{{ cookiecutter.project_slug }}"
 
 print("Create venv...")
 run([f"python{python_version}", "-m", "venv", "venv"])
@@ -47,5 +48,5 @@ run(["git", "commit", "-m", "Setup project"])
 
 print("\nAll done, run:")
 print(f"    cd {Path.cwd()} && source venv/bin/activate")
-print("    gh repo create --public -s .")
+print(f"    gh repo create {project_slug} --public -s .")
 print("    git push --set-upstream origin main")
