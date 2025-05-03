@@ -23,7 +23,7 @@ dependencies = []
 dev = [
     # Tests
     "pytest==8.*",
-    "pytest-cov==5.*",
+    "pytest-cov==6.*",
 
     # Lint
     "mypy==1.*",
