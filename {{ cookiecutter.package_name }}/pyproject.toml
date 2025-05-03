@@ -67,7 +67,7 @@ exclude = [
 
 [[tool.mypy.overrides]]
 module = "tests.*"
-disable_error_code = ["method-assign"]
+disable_error_code = ["method-assign"] # in test, we want to be able to mock instance methods
 
 [tool.ruff]
 fix = true
