@@ -76,6 +76,7 @@ unsafe-fixes = true
 [tool.ruff.lint]
 extend-select = ["ALL"]
 ignore = [
+    "COM812", # trailing comma. This is managed by black
     "D10", # missing docstring
     "D203", # one blank line before class docstring
     "D213", # multi-line summary first line
@@ -113,6 +114,7 @@ order-by-type = true
 [tool.black]
 target-version = ["py{{ cookiecutter.python_version.replace('.', '') }}"]
 line-length = 80
+skip-magic-trailing-comma = true
 
 [tool.coverage.run]
 omit = [
