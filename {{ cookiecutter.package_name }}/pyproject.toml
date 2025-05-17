@@ -82,7 +82,6 @@ ignore = [
     "D213", # multi-line summary first line
     "ANN", # type annotation
     "T20", # print/pprint
-    "I001", # import sort/formating
     "DTZ001",
     "DTZ005",
     "DTZ006",
