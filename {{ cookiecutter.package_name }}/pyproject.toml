@@ -108,6 +108,7 @@ inline-quotes = "double"
 
 [tool.ruff.lint.isort]
 lines-between-types = 1
+combine-as-imports = true
 order-by-type = true
 
 [tool.black]
