@@ -79,7 +79,7 @@ ignore = [
     "COM812", # trailing comma. This is managed by black
     "D10", # missing docstring
     "D203", # one blank line before class docstring
-    "D213", # multi-line summary first line
+    "D212", # multi-line summary first line
     "ANN", # type annotation
     "T20", # print/pprint
     "DTZ001",
