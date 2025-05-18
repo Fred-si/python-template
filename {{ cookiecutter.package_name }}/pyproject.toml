@@ -110,6 +110,16 @@ inline-quotes = "double"
 lines-between-types = 1
 combine-as-imports = true
 order-by-type = true
+section-order = [
+    "future",
+    "standard-library",
+    "third-party",
+    "first-party",
+    "testing",
+    "local-folder",
+]
+[tool.ruff.lint.isort.sections]
+testing = ["tests"]
 
 [tool.black]
 target-version = ["py{{ cookiecutter.python_version.replace('.', '') }}"]
