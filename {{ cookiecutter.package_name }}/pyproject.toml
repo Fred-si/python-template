@@ -101,9 +101,6 @@ allowed-confusables = ["’"]
 [tool.ruff.lint.flake8-annotations]
 mypy-init-return = true
 
-[tool.ruff.lint.flake8-quotes]
-inline-quotes = "double"
-
 [tool.ruff.lint.isort]
 lines-between-types = 1
 combine-as-imports = true

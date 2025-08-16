@@ -58,9 +58,6 @@ ignore = [
 [tool.ruff.flake8-annotations]
 mypy-init-return = true
 
-[tool.ruff.flake8-quotes]
-inline-quotes = "double"
-
 [tool.ruff.isort]
 lines-between-types = 1
 order-by-type = true
