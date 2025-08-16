@@ -86,6 +86,7 @@ ignore = [
     "DTZ005",
     "DTZ006",
     "PLC0414", # useless-import-alias
+    "PLC0415", # import-outside-top-level
 ]
 allowed-confusables = ["’"]
 
