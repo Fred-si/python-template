@@ -33,6 +33,7 @@ unsafe-fixes = true
 
 extend-select = ["A", "B", "C", "D", "E", "F", "G", "I", "N", "Q", "S", "T", "W", "ANN", "ARG", "BLE", "COM", "DJ", "DTZ", "EM", "ERA", "EXE", "FBT", "ICN", "INP", "ISC", "NPY", "PD", "PGH", "PIE", "PL", "PT", "PTH", "PYI", "RET", "RSE", "RUF", "SIM", "SLF", "TCH", "TID", "TRY", "UP", "YTT"]
 ignore = [
+    "COM812", # trailing comma. This is managed by black
     "D10", # missing docstring
     "D203", # one blank line before class docstring
     "D213", # multi-line summary first line
@@ -63,5 +64,6 @@ lines-between-types = 1
 order-by-type = true
 
 [tool.black]
-target-version = ['py311', 'py312']
+extend-exclude = "{{ cookiecutter.package_name }}"
+skip-magic-trailing-comma = true
 line-length = 80
