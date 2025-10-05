@@ -22,8 +22,8 @@ teardown: ## Delete generated files and venv
 	find . -name '__pycache__' | xargs rm -rf
 
 .PHONY: install
-install: venv/lib/python$(python_version)/site-packages/{{ cookiecutter.project_slug }}*
-venv/lib/python$(python_version)/site-packages/{{ cookiecutter.project_slug }}*: venv
+install: venv/lib/python$(python_version)/site-packages/{{ cookiecutter.package_name }}*
+venv/lib/python$(python_version)/site-packages/{{ cookiecutter.package_name }}*: venv
 	./venv/bin/pip install --upgrade pip
 	[[ -e requirements-dev.txt ]] && ./venv/bin/pip install -r requirements-dev.txt
 	./venv/bin/pip install -e '.'
@@ -72,4 +72,4 @@ venv/bin/pytest: install
 .PHONY: pipx
 pipx: ## Install application in userspace using pipx
 	pipx install --force .
-	pipx inject {{ cookiecutter.project_slug }} --force -r requirements.txt
+	pipx inject {{ cookiecutter.package_name }} --force -r requirements.txt
