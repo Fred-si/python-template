@@ -22,16 +22,16 @@ dependencies = []
 [project.optional-dependencies]
 dev = [
     # Tests
-    "pytest==8.*",
-    "pytest-cov==6.*",
+    "pytest",
+    "pytest-cov",
 
     # Lint
-    "mypy==1.*",
-    "ruff==0.*",
+    "mypy",
+    "ruff",
 
     # Misc
-    "pre-commit==4.*",
-    "black==25.*",
+    "pre-commit",
+    "black",
 ]
 
 [project.scripts]
