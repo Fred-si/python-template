@@ -21,20 +21,12 @@ def run(command: list[str], *, raise_error: bool = True) -> str:
 python_version = "{{ cookiecutter.python_version }}"
 project_slug = "{{ cookiecutter.project_slug }}"
 
-print("Create venv...")
-run([f"python{python_version}", "-m", "venv", "venv"])
-run(["./venv/bin/pip", "install", "--upgrade", "pip"])
-
-print("Install requirements...")
-run(["./venv/bin/pip", "install", "-e", ".[dev]"])
-
 print("Setup Git...")
 run(["git", "init"])
 
-# Autoupdate modify .pre-commit-config.yaml, we need to run it before add files
-run(["./venv/bin/pre-commit", "autoupdate"])
-
-run(["./venv/bin/pre-commit", "install", "--install-hooks"])
+print("Setup project")
+run(["make", "setup"])
+run(["make", "pre-commit-upgrade"])
 
 # Some pre-commit hooks return non-zero code even if modify files.
 # We need to run pre-commit before for prevent git commit fail.
