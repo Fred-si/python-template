@@ -3,17 +3,16 @@ from pathlib import Path
 
 
 def run(command: list[str], *, raise_error: bool = True) -> str:
-    completed = subprocess.run(command, capture_output=True, check=False)  # noqa: S603
+    completed = subprocess.run(  # noqa: S603
+        command, capture_output=True, check=False
+    )
 
     if raise_error and completed.returncode != 0:
-        print(run(['ls', 'src']))
+        print(run(["ls", "src"]))
         print(f"Erreur lors de l’execution de la commande {command}")
         print(completed.stderr.decode())
 
-        raise subprocess.CalledProcessError(
-            completed.returncode,
-            command,
-        )
+        raise subprocess.CalledProcessError(completed.returncode, command)
 
     return completed.stdout.decode()
 
