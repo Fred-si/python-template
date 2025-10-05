@@ -39,6 +39,6 @@ run(["git", "add", "."])
 run(["git", "commit", "-m", "Setup project"])
 
 print("\nAll done, run:")
-print(f"    cd {Path.cwd()} && source venv/bin/activate")
+print(f"    cd {Path.cwd().name} && source venv/bin/activate")
 print(f"    gh repo create {project_slug} --source=. --remote=origin --public")
 print("    git push --set-upstream origin main")
