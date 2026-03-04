@@ -82,13 +82,15 @@ ignore = [
     "D212", # multi-line summary first line
     "ANN", # type annotation
     "T20", # print/pprint
-    "PLC0414", # useless-import-alias
     "PLC0415", # import-outside-top-level
 ]
 allowed-confusables = ["’"]
 
 [tool.ruff.lint.per-file-ignores]
-"__init__.py" = ["E402"]
+"__init__.py" = [
+    "E402",
+    "PLC0414", # useless-import-alias
+]
 "test_*.py" = [
     "S101", # assert
     "PLR2004", # missing-type-self
